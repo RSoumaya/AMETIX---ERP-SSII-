@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+
+    <meta charset="utf-8"></meta><br></br>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+    <title>Candidats de XEROBOUTIQUE / RESOTREKK</title>
+	<link href="../frontOffice/images/LOGO_Groupe.jpg" rel="icon" type="image/png"></link>
+   <ui:include src="scriptDevAdmin/css.xhtml"></ui:include>
+
+</h:head>
+
+
+
+<body>
+
+   <div id="wrapper" >
+       <ui:include src="MenuTop.xhtml"></ui:include>
+       <ui:include src="MenuLeft.xhtml"></ui:include>
+   </div>
+        
+        
+        <div id="page-wrapper" style="position: relative;top: -35px">
+
+            
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-title">
+                            <h1>Candidats
+                                <small>Consulter les candidats</small>
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-dashboard"></i>  <a href="tableaudebord.xhtml">Tableau de bord</a>
+                                </li>
+                                <li class="active">Candidats</li>
+                            </ol>
+                        
+                        </div>
+                       <div class="row">
+                    
+                   
+                         <h:form>
+                            <div class="col-lg-12">    
+                            <div class="row pricing-basic">
+                              <ui:repeat id="tablee" var="o" value="#{candidatCtr.listcandidat}" varStatus="status">
+                              
+                            <div class="col-md-3">
+                                <ul class="plan plan1">
+                                    <li class="plan-name">
+                                        #{o.nomCandidat} &nbsp; #{o.prenomCandidat}
+                                    </li>
+                                    <li class="plan-price">
+                                        <strong>
+                                        <img src="../frontOffice/photoprofil/#{o.photoprofil}" style="border-radius:80px;width:60%;height: 200px" />
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        <strong>Nom</strong> #{o.nomCandidat}
+                                    </li>
+                                    <li>
+                                        <strong>Prènom</strong> #{o.prenomCandidat}
+                                    </li>
+                                    <li>
+                                        <strong>Email</strong> #{o.emailCandidat}
+                                    </li>
+                                    <li>
+                                        <strong>Télephone</strong> #{o.telCandidat}
+                                    </li>
+                                    <li>
+                                        <strong>Ville</strong> #{o.villeCandidat}
+                                    </li>
+                                    <li class="plan-action">
+                                      <h:commandLink value="Curriculum" class="btn btn-default btn-lg" action="candidatsplus.xhtml?faces-redirect=true" pt:target="_blank"  style="margin-top: 7px"> 
+                                  <f:setPropertyActionListener value="#{o}" target="#{candidatCtr.candidat}" />
+                                </h:commandLink>
+                     
+                                       &nbsp;&nbsp;
+                                        <h:commandLink style="margin-top:7px" value="Voir plus" class="btn btn-default btn-lg" action="visualisermoncv.xhtml?faces-redirect=true" pt:target="_blank">
+                       				   
+                                                             <f:setPropertyActionListener value="#{o}" target="#{candidatCtr.candidat}" />
+                                                            </h:commandLink>
+                                                            
+                                    </li>
+                                </ul>
+                            </div>
+                           </ui:repeat>
+                        </div>
+                        
+                                
+                            </div>
+                          </h:form>
+                        </div>
+                    </div>   
+                    </div>
+                </div>
+         
+    
+<f:view>
+    <f:metadata>     
+        <f:event type="preRenderView" listener="#{authentificationCtr.redirect}"/>            
+    </f:metadata>
+</f:view>
+ <f:view>
+    <f:metadata>     
+        <f:event type="preRenderView" listener="#{multipleCtr.init}"/>            
+    </f:metadata>
+</f:view>
+<f:view>
+    <f:metadata>     
+        <f:event type="preRenderView" listener="#{multipleCtr.admin}"/>            
+    </f:metadata>
+	</f:view>
+
+<ui:include src="scriptDevAdmin/scripts.xhtml"></ui:include>
+
+ 
+    
+</body>
+</html>

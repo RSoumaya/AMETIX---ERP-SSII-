@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<h:head>
+
+    <meta charset="utf-8"></meta><br></br>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+    <title>Contact de XEROBOUTIQUE / RESOTREKK</title>
+<link href="../frontOffice/images/LOGO_Groupe.jpg" rel="icon" type="image/png"></link>
+   <ui:include src="scriptDevAdmin/css.xhtml"></ui:include>
+   
+     <style type="text/css">
+   
+   .ui-growl{
+position: fixed;
+top: 6.5%;
+
+}
+   </style>
+
+</h:head>
+
+
+
+<body>
+
+   <div id="wrapper">
+       <ui:include src="MenuTop.xhtml"></ui:include>
+       <ui:include src="MenuLeft.xhtml"></ui:include>
+   </div>
+    
+    
+    
+   
+        <div id="page-wrapper" style="position: relative;top: -35px">
+            
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-title">
+                            <h1>
+                                Mailbox
+                                <small>Centre des Messages</small>
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-dashboard"></i>  <a href="tableaudebord.xhtml">Tableau de bord</a>
+                                </li>
+                                <li class="active">Boite de réception</li>
+                            </ol>
+                        </div>
+                    </div>
+                   
+               
+                
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="portlet portlet-default">
+                            <div class="portlet-body">
+
+                                <div id="mailbox">
+
+                                    <ul class="nav nav-pills nav-stacked mailbox-sidenav">                       
+                                        <li class="active"><a href="#">Boite Réception (#{tableaubordCtr.countmessages})</a>
+                                        </li>              
+                                    </ul>
+
+                                    <div id="mailbox-wrapper">
+
+                                        <div class="table-responsive mailbox-messages">
+                                         
+                                            
+                                             <div class="col-lg-13">
+                                <div class="portlet portlet-blue" style="width: 100%">
+                                    <div class="portlet-heading" >
+                                        <div class="portlet-title" >
+                                            <h4><i class="fa fa-exchange fa-fw"></i> Messages Reçus</h4>
+                                        </div>
+                                        <div class="portlet-widgets" >
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#transactionsPortlet"><i class="fa fa-chevron-down"></i></a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div id="transactionsPortlet" class="panel-collapse collapse in" >
+                                        <div class="portlet-body" >
+                                            <div class="table-responsive dashboard-demo-table" >
+                                                <table class="table table-bordered table-striped table-hover" >
+                                                    <thead>
+                                                        <tr>
+                                                        <th><center>Contact</center></th>
+                                                            <th><center>Téléphone</center></th>
+                                                            <th><center>Email</center></th>
+                                                            <th><center>Objet</center></th>
+                                                            <th><center>Sujet</center></th>
+                                                       
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                     <ui:repeat var="o" value="#{contactCtr.list}" varStatus="status">
+                                                        <tr>
+                                                        
+                                                         
+                                                         	
+                       				
+                                                            <td>#{o.nom}</td>
+                                                            <td>#{o.tel}</td>
+                                                            <td>#{o.email}</td>
+                                                            <td>#{o.sujet}</td>
+                                                           <td>#{o.message}</td>
+                                                                                                       
+                                                        </tr>
+                                                       </ui:repeat>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                        </div>                                 
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>           
+                </div>
+                
+            </div>
+        </div>
+       
+<f:view>
+    <f:metadata>     
+        <f:event type="preRenderView" listener="#{authentificationCtr.redirect}"/>            
+    </f:metadata>
+</f:view>
+
+<f:view>
+    <f:metadata>     
+        <f:event type="preRenderView" listener="#{multipleCtr.admin}"/>            
+    </f:metadata>
+	</f:view>
+
+<ui:include src="scriptDevAdmin/scripts.xhtml"></ui:include>
+
+  
+</body>
+</html>

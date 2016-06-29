@@ -1,0 +1,92 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<h:head>
+	<ui:include src="/frontOffice/scriptDev/css.xhtml"></ui:include>
+</h:head>
+
+<body oncontextmenu="return false">
+
+	
+	  <h:form>
+                                       <p:growl id="mm"></p:growl>                                  
+                                            <h3 class="title title-lg">A propos</h3>
+                                            <br></br>
+                                            
+                                            <dt>Nom</dt>
+                                            <dd>
+                                            
+                                            <h:inputText value="#{informationsCtr.candidat.nomCandidat}" disabled="true"/>
+                                            </dd>
+                                            <hr></hr>
+                                                                                                                                  
+                                             <dt>Prènom</dt>
+                                            <dd>
+                                            <h:inputText value="#{informationsCtr.candidat.prenomCandidat}" disabled="true" />
+                                            </dd>
+                                            <hr></hr>
+                                                                                                                                                                            
+                                            <dt>Adresse electronique</dt>
+                                            <dd>
+                                            <h:inputText maxlength="60" value="#{informationsCtr.candidat.emailCandidat}" 
+                                            disabled="true"/>                                          
+                                            </dd>
+                                            <hr></hr>
+                                                                                                                                   
+                                            <dt>Tel portable</dt>
+                                            <dd>
+                                            <h:inputText maxlength="15" value="#{informationsCtr.candidat.telCandidat}" 
+                                            required="true" requiredMessage="Vous devez saisir votre numéro de téléphone"
+                                            validator="com.resotrekk.validator.NumberValidator" validatorMessage="Veuillez vérifier votre numéro mobile"/>
+                                               
+                                            </dd>
+                                            <hr></hr>
+                                                                                                                                  
+                                            <dt>Adresse</dt>
+                                            <dd>
+                                             <h:inputText maxlength="50" value="#{informationsCtr.candidat.adresseCandidat}" />
+                                                
+                                            </dd>
+                                            <hr></hr>
+                                                                                      
+                                          <dt>Ville</dt>
+                                            <dd>
+                                             <h:inputText maxlength="15" value="#{informationsCtr.candidat.villeCandidat}" />
+                                                
+                                            </dd>
+                                            <hr></hr>
+                                                                                       
+                                            <dt>Code postal</dt>
+                                            <dd>
+                                             <h:inputText maxlength="8" value="#{informationsCtr.candidat.codePostalCandidat}" />
+                                                
+                                            </dd>
+                                            <hr></hr>
+                                            
+                                            <dt>Sociéte</dt>
+                                            <dd>
+                                            <h:inputText maxlength="20" value="#{informationsCtr.candidat.societeCandidat}" />
+                                              
+                                            </dd>
+                                                                                       
+                                            <dd>
+													<br></br><br></br> <span> <h:commandButton 		
+																					
+														class="btn btn-base btn-icon btn-icon-right btn-sign-in pull-right"
+														update="mm" style="position: relative; left: -105%;background-color:#3498DB"
+														action="#{informationsCtr.modifierInformations}"
+														value="Modifier mon compte" >
+
+														</h:commandButton>
+												</span>
+												</dd>												
+                                      </h:form>
+														</body>
+														</html>

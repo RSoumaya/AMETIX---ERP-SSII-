@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"> 
+
+<h:head>
+
+    <meta charset="utf-8"></meta><br></br>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+    <title>Tableau de bord de RESOTREKK / XEROBOUTIQUE</title>
+ 
+    <link href="../frontOffice/images/LOGO_Groupe.jpg" rel="icon" type="image/png"></link>
+    <link href="css/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css"></link>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css"></link>
+    <link href="icons/font-awesome/css/font-awesome.min.css" rel="stylesheet"></link>
+    <link href="css/style.css" rel="stylesheet"></link>
+    <link href="css/plugins.css" rel="stylesheet"></link>
+    <link href="css/demo.css" rel="stylesheet"></link>
+    
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    
+ 
+
+ 	<script type="text/javascript"> 
+function noBack(){window.history.forward()} 
+noBack();   
+window.onload=noBack; 
+window.onpageshow=function(evt){if(evt.persisted)noBack()} 
+window.onunload=function(){void(0)} 
+</script>
+
+
+</h:head>
+
+
+          
+<body class="login" > 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-banner text-center">
+                    <h1><i class="fa fa-gears"></i> Administration</h1>
+                </div>
+                <div class="portlet portlet-green">
+                    <div class="portlet-heading login-heading">
+                        <div class="portlet-title">
+                            <h4><strong>Connecter sur Xeroboutique / Resotrekk !</strong>
+                            </h4>
+                        </div>
+                       
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="portlet-body">
+                        <h:form id="form">
+                        <p:growl id="msgs"></p:growl>
+                            <fieldset>
+                                <div class="form-group">
+                                    <h:inputText required="true" requiredMessage="Vous devez saisir l'adresse éléctronique" value="#{authentificationCtr.login}" id="j_username" class="form-control" pt:placeholder="Adresse éléctronique" ></h:inputText>
+                                </div>
+                                <div class="form-group">
+                                    <h:inputSecret required="true" requiredMessage="Vous devez saisir le mot de passe" value="#{authentificationCtr.password}"  id="j_password" class="form-control" pt:placeholder="Mot de passe" name="password" type="password" ></h:inputSecret>
+                                </div>
+                                
+                                <br></br>
+                                
+                                <h:commandButton  update=":form:msgs" action="#{authentificationCtr.seConnecter}" class="btn btn-lg btn-green btn-block"   value="Connecter"></h:commandButton>
+
+                            </fieldset>
+                            <br></br>
+                            <p class="small">
+                                <a href="motdepasseoublie.xhtml">Mot de passe oublié ?</a>
+                            </p>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<f:view>
+    <f:metadata>     
+        <f:event type="preRenderView" listener="#{authentificationCtr.init}"/>            
+    </f:metadata>
+	</f:view>
+	
+	<f:view>
+    <f:metadata>     
+        <f:event type="preRenderView" listener="#{multipleCtr.admin}"/>            
+    </f:metadata>
+	</f:view>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/plugins/hisrc/hisrc.js"></script>
+    <script src="js/flex.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<h:head>
+
+<meta charset="utf-8"></meta>
+<title>CV XEROBOUTIQUE / RESOTREKK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content="Sabaina Bukhari"></meta>
+<link rel="stylesheet" href="csscv/bootstrap.min.css"></link>
+<link rel="stylesheet" href="csscv/bootstrap-responsive.min.css"></link>
+<link rel="stylesheet" href="csscv/font-awesome.css"></link>
+<link rel="stylesheet" href="csscv/colorpicker.css"></link>
+<link rel="stylesheet" href="csscv/style.css"></link>
+<link rel="stylesheet" href="csscv/print.css" media="print"></link>
+<link href="../frontOffice/images/LOGO_Groupe.jpg" rel="icon" type="image/png"></link>
+
+</h:head>
+
+<body>
+
+
+
+<div class="container">
+
+	<div class="row" id="name-contact">
+		<div class="span12">
+		
+			<h1><h:outputText value="RESO" style="color:CornflowerBlue" /><h:outputText value="TREKK" style="color:green" /> &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;		<img src="../frontOffice/photoprofil/#{candidatCtr.candidat.photoprofil}" alt="Photo" style="border-radius:80px;width:20%;height: 200px"/></h1>
+			<hr/>
+			
+			<div class="row">
+					
+				<div class="span4">
+
+					<p>
+						<small>
+						<i class="icon-envelope"></i><span class="text-info" style="color:DeepSkyBLue;font-weight:bold">#{candidatCtr.candidat.emailCandidat}</span><br/>
+						<i class="icon-phone"></i><span class="text-info" style="color:DeepSkyBLue;font-weight:bold">#{candidatCtr.candidat.nomCandidat}</span><br/>
+						<i class="icon-map-marker"></i><span class="text-info" style="color:DeepSkyBLue;font-weight:bold">#{candidatCtr.candidat.prenomCandidat}</span>
+						</small>
+					</p>
+				</div>
+	
+			
+				<div class="span8">
+					<p>
+						<small>
+						<i class="icon-envelope"></i><span class="text-info" style="color:DeepSkyBLue;font-weight:bold">#{candidatCtr.candidat.adresseCandidat}</span><br/>
+						<i class="icon-phone"></i><span class="text-info" style="color:DeepSkyBLue;font-weight:bold">#{candidatCtr.candidat.villeCandidat}</span><br/>
+						<i class="icon-map-marker"></i><span class="text-info" style="color:DeepSkyBLue;font-weight:bold">#{candidatCtr.candidat.codePostalCandidat}</span>
+						</small>
+					</p>
+				</div>
+				
+				
+				<div class="span8">
+					<p>
+						<small>
+						<i class="icon-envelope"></i><span class="text-info" style="color:DeepSkyBLue;font-weight:bold">#{candidatCtr.candidat.infoSupplementaires}</span><br/>
+						</small>
+					</p>
+				</div>
+				
+				
+			</div>
+		</div>
+	</div>
+	<hr/>
+
+	<div class="row" id="technical-skills">
+		<div class="span2">
+			<h2><span>&sect;</span> Compétences</h2>
+		</div>
+		<div class="span10">
+			<ul class="unstyled">
+			
+			<ui:repeat var="o" value="#{candidatCtr.listcompetencecandidat}">
+				<li class="icon-ok">#{o.competences.libelleCompetence}</li>
+							</ui:repeat>
+			</ul>
+		</div>
+	</div>
+	<hr/>
+
+	
+	<div class="row" id="education">
+		<div class="span2">
+			<h2><span>&sect;</span> Langues</h2>
+		</div>
+		<div class="span10">
+			<table class="table table-hover table-striped table-bordered table-condensed">
+			<ui:repeat var="o" value="#{candidatCtr.listlangueCandidat}">
+			<tbody>
+			<tr>
+				<td>
+					#{o.langueCandidat}
+				</td>			
+				<td>
+					#{o.statusLangue}
+				</td>			
+			</tr>			
+			</tbody>
+			</ui:repeat>
+			</table>
+		</div>
+	</div>
+	<hr/>
+
+	<div class="row" id="work-experience">
+		<div class="span2">
+			<h2><span>&sect;</span>Expérience</h2>
+		</div>
+		<ui:repeat var="o" value="#{candidatCtr.listexperienceCandidat}">
+		<div class="span2">
+		
+			<h3>Société </h3>
+			<p>
+				<small>
+				<i class="icon-star-empty" ></i> <h:outputText value="#{o.societe}" style="color: green;font-weight:bold;font-size:15px"/><br/>
+				<i class="icon-calendar"></i><h:outputText value="#{o.poste}" style="color: green;font-weight:bold;font-size:15px"/> <br></br>
+				<i class="icon-calendar"></i>#{o.descriptionPoste} </small>
+			</p>		
+		</div>	
+		</ui:repeat>
+	</div>
+</div>
+
+
+<f:view>
+    <f:metadata>     
+        <f:event type="preRenderView" listener="#{authentificationCtr.redirect}"/>            
+    </f:metadata>
+</f:view>
+
+<f:view>
+    <f:metadata>     
+        <f:event type="preRenderView" listener="#{multipleCtr.admin}"/>            
+    </f:metadata>
+	</f:view>
+
+<script src="scriptcv/bootstrap.js"></script>
+
+</body>
+</html>
